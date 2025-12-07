@@ -16,8 +16,8 @@ function App() {
         <button>Añadir</button>
       </div>
 
-      <div className="notes">
-        <div className="note">
+      <div className="tasks">
+        <div className="task">
           <h3>Titulo Nota</h3>
           <p>Descripcion nota</p>
 

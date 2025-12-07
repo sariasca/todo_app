@@ -1,4 +1,4 @@
-package com.sariasca.notesapp;
+package com.sariasca.todoapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

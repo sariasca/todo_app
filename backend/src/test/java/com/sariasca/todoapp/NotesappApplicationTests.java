@@ -1,4 +1,4 @@
-package com.sariasca.notesapp;
+package com.sariasca.todoapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
