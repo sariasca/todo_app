@@ -4,10 +4,10 @@ import './App.css'
 function App() {
   return (
     <>
-    <title>App de Notas</title>    
-      <h1>App de Notas</h1>     
+    <title>App de Tareas</title>    
+      <h1>App de Tareas pendientes</h1>     
       <p className="read-the-docs">
-        Sencilla aplicación para tomar notas rápidas.
+        Sencilla aplicación para apuntar tareas pendientes, con categoria y prioridad.
       </p>
 
       <div>
@@ -18,8 +18,10 @@ function App() {
 
       <div className="tasks">
         <div className="task">
-          <h3>Titulo Nota</h3>
-          <p>Descripcion nota</p>
+          <h3>Titulo Tarea</h3>
+          <p>Descripcion tarea</p>
+          <p>Fecha creacion</p>
+          <p>Fecha modificacion</p>
 
           <button>Editar</button>
           <button>Eliminar</button>
