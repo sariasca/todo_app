@@ -7,4 +7,5 @@ public class CategoryDTO {
     private Integer id;
     private String name;
     private String color;
+    private long taskCount;
 }
