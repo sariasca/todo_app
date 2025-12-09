@@ -1,4 +1,4 @@
-package com.sariasca.todoapp.respositories;
+package com.sariasca.todoapp.repositories;
 
 import com.sariasca.todoapp.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;

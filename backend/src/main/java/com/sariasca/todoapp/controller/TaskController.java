@@ -1,7 +1,7 @@
 package com.sariasca.todoapp.controller;
 
 import com.sariasca.todoapp.model.Task;
-import com.sariasca.todoapp.respositories.TaskRepository;
+import com.sariasca.todoapp.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
