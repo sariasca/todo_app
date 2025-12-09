@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import com.sariasca.todoapp.model.Priority;
 
 import java.time.LocalDateTime;
 
@@ -50,8 +51,4 @@ public class Task {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
-}
-
-enum Priority {
-    LOW, MEDIUM, HIGH
 }

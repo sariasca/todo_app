@@ -8,11 +8,12 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.sariasca</groupId>
 	<artifactId>notesapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>notesapp</name>
-	<description>Proyecto aplicacion de notas con Spring</description>
+	<description>Proyecto de gestion de tareas con Spring</description>
 	<url/>
 	<licenses>
 		<license/>
