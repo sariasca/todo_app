@@ -9,10 +9,10 @@ import java.util.List;
 @Repository
 
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-    List<Task> findByName(String name);
+    List<Task> findByTitleContainingIgnoreCase(String title);
     List<Task> findByFinished(Boolean finished);
     List<Task> findByCategoryId(Integer categoryId);
-    List<Task> findByFinishedAndCategoryId(Boolean finish, Integer categoryId);
+    List<Task> findByFinishedAndCategoryId(boolean finish, Integer categoryId);
     long countByCategoryId(Integer categoryId);
 
 }

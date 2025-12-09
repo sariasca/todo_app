@@ -22,7 +22,7 @@ public class Category {
     @Column (nullable = false, unique = true)
     private String name;
 
-    @Column
+    @Column (unique = true, length = 7)
     private String color;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)

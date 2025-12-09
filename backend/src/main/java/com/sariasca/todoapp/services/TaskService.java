@@ -34,6 +34,20 @@ public class TaskService {
         return convertToDTO(task);
     }
 
+    public List<TaskDTO> searchTaskByTitle(String searchTitle) {
+        return taskRepository.findByTitleContainingIgnoreCase(searchTitle)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<TaskDTO> getTasksByStatusAndCategory(boolean finished, Integer categoryId) {
+        return taskRepository.findByFinishedAndCategoryId(finished, categoryId)
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+    }
+
     public TaskDTO createTask(CreateTaskReq request) {
         Task task = new Task();
         task.setTitle(request.getTitle());

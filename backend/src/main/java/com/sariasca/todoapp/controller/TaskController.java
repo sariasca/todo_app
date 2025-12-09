@@ -63,6 +63,39 @@ public class TaskController {
         return ResponseEntity.ok(ApiResponse.success("Tarea eliminada correctamente", null));
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<ApiResponse<List<TaskDTO>>> searchTasks(@RequestParam String q) {
+        List<TaskDTO> tasks = taskService.searchTaskByTitle(q);
+        String message = tasks.isEmpty()
+                ? "No se encontraron tareas con '" + q + "'"
+                : "Se encontraron " + tasks.size() + " tareas";
+        return ResponseEntity.ok(ApiResponse.success(message, tasks));
+    }
+
+    @GetMapping("/filter")
+    public ResponseEntity<ApiResponse<List<TaskDTO>>> filterTasks(
+            @RequestParam(required = false) Boolean finished,
+            @RequestParam(required = false) Integer categoryId) {
+
+        List<TaskDTO> tasks;
+
+        if (finished != null && categoryId != null) {
+            // Ambos filtros
+            tasks = taskService.getTasksByStatusAndCategory(finished, categoryId);
+        } else if (finished != null) {
+            // Solo por estado
+            tasks = taskService.getTasksByStatus(finished);
+        } else if (categoryId != null) {
+            // Solo por categoría
+            tasks = taskService.getTasksByCategory(categoryId);
+        } else {
+            // Sin filtros
+            tasks = taskService.getAllTasks();
+        }
+
+        return ResponseEntity.ok(ApiResponse.success("Tareas filtradas", tasks));
+    }
+
     @GetMapping("/status/{finished}")
     public ResponseEntity<List<TaskDTO>> getTasksByStatus(@PathVariable boolean finished) {
         return ResponseEntity.ok(taskService.getTasksByStatus(finished));

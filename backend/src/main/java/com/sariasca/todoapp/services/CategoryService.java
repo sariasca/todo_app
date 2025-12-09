@@ -36,9 +36,11 @@ public class CategoryService {
             throw new RuntimeException("Ya existe una categoria con el nombre: " + request.getName());
         }
 
+        String sanitizedColor = sanitizeColor(request.getColor());
+
         Category category = new Category();
         category.setName(request.getName());
-        category.setColor(request.getColor());
+        category.setColor(sanitizedColor);
 
         Category savedCategory = categoryRepository.save(category);
         return convertToDTO(savedCategory);
@@ -84,5 +86,23 @@ public class CategoryService {
         dto.setTaskCount(taskCount);
 
         return dto;
+    }
+
+    //Metodo para sanitizar el color en hexadecimal
+    private String sanitizeColor(String color) {
+        if (color == null) return null;
+
+        // Asegurar formato #RRGGBB en mayúsculas
+        color = color.toUpperCase().trim();
+
+        if (!color.startsWith("#")) {
+            color = "#" + color;
+        }
+        // Validar formato
+        if (!color.matches("^#[0-9A-F]{6}$")) {
+            throw new RuntimeException("Formato de color inválido. Use #RRGGBB");
+        }
+
+        return color;
     }
 }
