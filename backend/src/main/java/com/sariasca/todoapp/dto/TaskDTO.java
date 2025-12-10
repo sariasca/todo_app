@@ -15,8 +15,6 @@ public class TaskDTO {
     private LocalDateTime createdAt;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updatedAt;
-    @JsonFormat(pattern =  "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime dueDate;
     private String priority;
     private Integer categoryId;
     private String categoryName;
