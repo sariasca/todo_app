@@ -8,9 +8,6 @@ import type {
 
 const API_URL = import.meta.env.VITE_URL_API;
 
-const instance = axios.create({ baseURL: import.meta.env.VITE_API_URL });
-
-
 axios.interceptors.response.use(
     response => {
         return response.data;
