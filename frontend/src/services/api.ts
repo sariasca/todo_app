@@ -8,15 +8,6 @@ import type {
 
 const API_URL = import.meta.env.VITE_URL_API;
 
-axios.interceptors.response.use(
-    response => {
-        return response.data;
-    },
-    error => {
-        return Promise.reject(error);
-    }
-);
-
 export const taskApi = {
     getAll: () => axios.get<ApiResponse<Task[]>>(`${API_URL}/tasks`),
     getById: (id: number) => axios.get<ApiResponse<Task>>(`${API_URL}/tasks/${id}`),
