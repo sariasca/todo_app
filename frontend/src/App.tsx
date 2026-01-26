@@ -39,9 +39,17 @@ function App() {
     }
   };
 
+  /** Refresca los datos de tareas y categorías */
+  const refreshData = async () => {
+    await Promise.all([
+      fetchTasks(),
+      fetchCategories()
+    ]);
+  };
+
   const handleCategorySelect = (categoryId: number | null) => {    
     setSelectedCategory(categoryId);    
-};
+  };
 
   const handleCategoryCreated = (createdCategory?: Category) => {
     if (!createdCategory) {
@@ -60,7 +68,6 @@ function App() {
 
   return (
     <div className="app min-h-screen bg-linear-to-br from-slate-700 to-gray-900 text-gray-100">
-      {/* Header con estilo moderno */}
       <header className="
         bg-linear-to-r from-blue-700/20 to-purple-700/20 
         backdrop-blur-xl 
@@ -128,7 +135,7 @@ function App() {
             <div className="bg-linear-to-r from-cyan-900 to-blue-400 backdrop-blur-lg rounded-2xl shadow-xl p-6 border border-white/10">
               <TaskList 
                 tasks={tasks} 
-                onTasksUpdated={fetchTasks} 
+                onTasksUpdated={refreshData} 
                 selectedCategory={selectedCategory}  
               />
             </div>
@@ -160,7 +167,7 @@ function App() {
                 <TaskForm
                   categories={categories}
                   onSuccess={() => {
-                    fetchTasks();
+                    refreshData();
                     setShowTaskForm(false);
                   }}
                 />
