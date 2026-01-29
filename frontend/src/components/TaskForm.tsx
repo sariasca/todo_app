@@ -110,8 +110,8 @@ const TaskForm = ({ taskToEdit, categories, onSuccess, onCancel }: TaskFormProps
           <select
             value={categoryId || ''}
             onChange={(e) => setCategoryId(e.target.value ? Number(e.target.value) : undefined)}
-            className="flex-1 p-3 border border-gray-600 rounded-lg text-gray-100 bg-gray-900/70 focus:outline-none 
-            focus:ring-2 focus:ring-emerald-400 transition"
+            className="flex-1 min-w-0 max-w-full p-3 border border-gray-600 rounded-lg text-gray-100 bg-gray-900/70
+            focus:outline-none focus:ring-2 focus:ring-emerald-400 truncate"
           >
             <option value="">Sin categoría</option>
             {categories.map((cat) => (

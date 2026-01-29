@@ -107,11 +107,11 @@ function App() {
           
           <section className="flex-1 min-w-0">
             <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
+              <div className="min-w-0 flex-1">
                 <h2 className="text-3xl font-bold text-gray-100 mb-2">
                   Tus Tareas
                   {selectedCategory && (
-                    <span className="text-blue-300 ml-2">
+                    <span className="text-blue-300 ml-2 inline-block max-w-full truncate align-bottom">
                       → {categories.find(c => c.id === selectedCategory)?.name}
                     </span>
                   )}
