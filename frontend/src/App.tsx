@@ -72,21 +72,19 @@ function App() {
         bg-linear-to-r from-blue-700/20 to-purple-700/20 
         backdrop-blur-xl 
         border-b border-gray-700/40 
-        py-8 px-4 mb-8 rounded-md
+        py-10 px-4 mb-8 rounded-md
       ">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto text-center">
 
-          <div className="flex items-center gap-4 mb-4">
-            <h1 className="
-              text-4xl md:text-5xl font-bold
-              bg-linear-to-r from-blue-400 to-purple-300
-              bg-clip-text pb-2 text-transparent
+          <h1 className="
+            text-4xl md:text-5xl font-bold
+            bg-linear-to-r from-blue-400 to-purple-300
+            bg-clip-text text-transparent pb-2 mb-4
             ">
-              Aplicacion de gestion de tareas
-            </h1>
-          </div>
+            Aplicación de gestión de tareas
+          </h1>
 
-          <p className="text-gray-100 text-lg max-w-2xl">
+          <p className="text-gray-100 text-lg max-w-2xl mx-auto">
             Organiza y gestiona tareas categorizando y escogiendo una prioridad para cada una.
           </p>
 
@@ -95,7 +93,7 @@ function App() {
 
       <div className="max-w-7xl mx-auto px-4 mt-4 pb-12">
         <div className="flex flex-col lg:flex-row gap-6">
-          <aside className="lg:w-1/4">
+          <aside className="lg:w-1/3 xl:w-1/4">
             <div className="bg-linear-to-b from-slate-700/60 to-slate-900/60 backdrop-blur-lg rounded-2xl 
             shadow-2xl p-6 border border-gray-700/50 sticky top-6">
               <CategoryFilter
@@ -107,7 +105,7 @@ function App() {
             </div>
           </aside>
           
-          <section className="lg:w-3/4">
+          <section className="flex-1 min-w-0">
             <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h2 className="text-3xl font-bold text-gray-100 mb-2">
@@ -132,7 +130,7 @@ function App() {
               </button>
             </div>
 
-            <div className="bg-linear-to-r from-cyan-900 to-blue-400 backdrop-blur-lg rounded-2xl shadow-xl p-6 border border-white/10">
+            <div className="relative rounded-2xl shadow-xl p-6 bg-cyan-900/80 border border-white/10">
               <TaskList 
                 tasks={tasks} 
                 onTasksUpdated={refreshData} 

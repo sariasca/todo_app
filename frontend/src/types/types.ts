@@ -48,3 +48,5 @@ export interface UpdateCategoryRequest {
     name?: string;
     color?: string;
 }
+
+export type TaskPriority = 'LOW' | 'MEDIUM' | 'HIGH';
