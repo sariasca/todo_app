@@ -2,6 +2,7 @@ package com.sariasca.todoapp.controller;
 
 import com.sariasca.todoapp.dto.CategoryDTO;
 import com.sariasca.todoapp.dto.CreateCategoryReq;
+import com.sariasca.todoapp.dto.UpdateCategoryReq;
 import com.sariasca.todoapp.services.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -43,9 +44,9 @@ public class CategoryController {
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<CategoryDTO>> updateCategory(
             @PathVariable Integer id,
-            @RequestBody CreateCategoryReq request) {
-        CategoryDTO category = categoryService.updateCategory(id, request);
-        return ResponseEntity.ok(ApiResponse.success("Categoría actualizada", category));
+            @RequestBody UpdateCategoryReq request) {
+        CategoryDTO updatedCategory = categoryService.updateCategory(id, request);
+        return ResponseEntity.ok(ApiResponse.success("Categoría actualizada", updatedCategory));
     }
 
     @DeleteMapping("/{id}")

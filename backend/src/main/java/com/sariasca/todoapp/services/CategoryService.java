@@ -2,6 +2,7 @@ package com.sariasca.todoapp.services;
 
 import com.sariasca.todoapp.dto.CategoryDTO;
 import com.sariasca.todoapp.dto.CreateCategoryReq;
+import com.sariasca.todoapp.dto.UpdateCategoryReq;
 import com.sariasca.todoapp.model.Category;
 import com.sariasca.todoapp.repositories.CategoryRepository;
 import com.sariasca.todoapp.repositories.TaskRepository;
@@ -46,21 +47,22 @@ public class CategoryService {
         return convertToDTO(savedCategory);
     }
 
-    public CategoryDTO updateCategory(Integer id, CreateCategoryReq request) {
+    public CategoryDTO updateCategory(Integer id, UpdateCategoryReq request) {
         Category category = categoryRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria con id '" + id + "' no encontrada"));
+                .orElseThrow(() -> new RuntimeException("Categoría con id '" + id + "' no encontrada"));
 
-        if (!category.getName().equals(request.getName()) &&
-                categoryRepository.existsByName(request.getName())) {
-            throw new RuntimeException("Ya existe una categoria con el nombre: " + request.getName());
+        if (request.getName() != null && !request.getName().trim().isEmpty()) {
+            // Validar duplicados del nombre
+            if (!category.getName().equals(request.getName()) &&
+                    categoryRepository.existsByName(request.getName())) {
+                throw new RuntimeException("Ya existe una categoría con el nombre: " + request.getName());
+            }
+            category.setName(request.getName().trim());
         }
-
-        category.setName(request.getName());
-
-        if (request.getColor() != null) {
-            category.setColor(request.getColor());
+        if (request.getColor() != null && !request.getColor().trim().isEmpty()) {
+            category.setColor(request.getColor().trim().toUpperCase());
         }
-
+        // Guardar solo si hubo cambios
         Category updatedCategory = categoryRepository.save(category);
         return convertToDTO(updatedCategory);
     }
