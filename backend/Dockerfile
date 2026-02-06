@@ -1,26 +1,26 @@
 # Imagen base con Java 25
-FROM eclipse-temurin:25-jdk-jammy
+FROM eclipse-temurin:25-jdk AS builder
 
 # Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
 # Copiamos solo mvnw y pom.xml primero para cachear dependencias
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
+COPY . .
 
 # Cache de dependencias
-RUN ./mvnw dependency:go-offline
-
-# Copiamos todo el código fuente
-COPY src ./src
-
-# Build del proyecto, saltando tests
 RUN ./mvnw clean package -DskipTests
 
-# Puerto que usará Render
-ENV PORT=8080
+# Build del proyecto, saltando tests
+FROM eclipse-temurin:25-jre
+
+#Definir directorio de trabajo
+WORKDIR /app
+
+#Copiar fichero JAR del builder stage
+COPY --from=builder /app/target/*.jar app.jar
+
+# Puerto que usará
 EXPOSE 8080
 
 # Start command
-CMD ["java", "-jar", "target/*.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
